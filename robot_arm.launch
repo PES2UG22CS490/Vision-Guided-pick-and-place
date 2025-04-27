@@ -1,0 +1,11 @@
+<launch>
+  <!-- Start RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_arm_color_manipulation)/launch/robot_arm.rviz" />
+  
+  <!-- Start the robot arm simulation -->
+  <node name="robot_arm_simulation" pkg="robot_arm_color_manipulation" type="color_based_manipulation.py" output="screen" />
+  
+  <!-- TF static transform publisher for the base link -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_broadcaster" 
+        args="0 0 0 0 0 0 world base_link" />
+</launch>
